@@ -1,0 +1,152 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --start: #22d3ee;
+    --stop: #fbbf24;
+    --reset: #f43f5e;
+}
+
+html,
+body {
+    min-height: 100%;
+    width: 100%;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, sans-serif;
+    color: #fff;
+}
+
+body {
+    background: url("jujutsu-kaisen-3840x2160-27211.png") center / cover no-repeat fixed;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 40px 16px;
+}
+
+h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+.display {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 14px;
+    padding: 32px 40px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+    gap: 8px;
+    min-width: 70px;
+}
+
+.digits {
+    font-size: 3.6rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums; /* stops numbers from jiggling */
+    text-shadow: 0 0 24px rgba(240, 25, 25, 0.474);
+}
+
+.digits.ms {
+    color: var(--reset);
+}
+
+.unit p {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.65;
+}
+
+.colon {
+    font-size: 3.2rem;
+    font-weight: 300;
+    line-height: 1.15;
+    opacity: 0.5;
+}
+.controls {
+    display: flex;
+    gap: 14px;
+    padding: 12px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+button {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #06222b;
+    transition: all 0.25s ease;
+}
+
+.start { background: var(--start); }
+.stop  { background: var(--stop); }
+.reset { background: var(--reset); color: #fff; }
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    filter: brightness(1.1);
+}
+
+button:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+@media (max-width: 600px) {
+    .display {
+        padding: 22px 16px;
+        gap: 6px;
+    }
+    .unit { min-width: 48px; }
+    .digits { font-size: 2.2rem; }
+    .colon { font-size: 2rem; }
+    .controls { gap: 8px; }
+    button { padding: 10px 18px; }
+}
